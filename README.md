@@ -1,2 +1,8 @@
 # Pika-Chute
-⚡ Put down the Stapler, or I will Electrocute You!
+🪂 For Quick Escapes from my Exams Prep
+
+Meanwhile look at [this](https://youtu.be/700clVx5l9E) and [this](http://trove42.com/introducing-pikachu-programming-language/)
+
+I plan to learn this language (and also try to make a pikachu-python translator if I get enough time)
+
+Or maybe this repo will get deleted in a week of just failures.
