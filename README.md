@@ -1,5 +1,5 @@
 # Pika-Chute
-🪂 For Quick Escapes from my Exams Prep
+🪂 For Quick Escapes from my Exams Prep (hence that name)
 
 Meanwhile look at [this](https://youtu.be/700clVx5l9E) and [this](http://trove42.com/introducing-pikachu-programming-language/)
 
