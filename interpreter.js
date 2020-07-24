@@ -7,8 +7,9 @@ function compiler(code) {
         var ip = document.getElementById('ip').value.replace(/\s\s+/g, ' ').trim().split(' ');
         for (i = 0; i < ip.length; i++)
             PiPikachu.push(ip[i]);
+    } catch (e) {
+        document.getElementById('op').value = "Invalid input!";
     }
-    catch (e) { document.getElementById('op').value = "Invalid input!"; }
 
     lines = code.split(/\r?\n/g);
     op = "";
@@ -19,28 +20,30 @@ function compiler(code) {
             switch (currentLine) {
                 case "pi pika":
                     PikaPikachu.push(PiPikachu[PiPikachu.length - 1]);
-                    f = 1; break;
+                    f = 1;
+                    break;
                 case "pika pi":
                     PiPikachu.push(PikaPikachu[PikaPikachu.length - 1]);
-                    f = 1; break;
+                    f = 1;
+                    break;
                 case "pi pikachu":
                     PiPikachu.pop();
-                    f = 1; break;
+                    f = 1;
+                    break;
                 case "pika pikachu":
                     PikaPikachu.pop();
-                    f = 1; break;
+                    f = 1;
+                    break;
                 case "pikachu pikachu":
                     if (PiPikachu[PiPikachu.length - 1] == PikaPikachu[PikaPikachu.length - 1]) {
 
                         n = pikachucount(lines[i + 1]).toString();
                         if (n.endsWith("found ")) {
                             document.getElementById('op').value = n + "on line " + (i + 1);
-                        }
-                        else {
+                        } else {
                             i = parseInt(n) - 2;
                         }
-                    }
-                    else i++;
+                    } else i++;
                     f = 1;
                     break;
                 case "pika pika":
@@ -48,16 +51,16 @@ function compiler(code) {
                         n = pikachucount(lines[i + 1]).toString();
                         if (n.endsWith("found ")) {
                             document.getElementById('op').value = n + "on line " + (i + 2);
-                        }
-                        else {
+                        } else {
                             i = parseInt(n) - 2;
                         }
-                    }
-                    else i++;
+                    } else i++;
                     f = 1;
                     break;
                 default:
-                    document.getElementById('op').value = "Invalid syntax on line " + (i + 1); alert(currentLine); alert(PiPikachu + "\n" + PikaPikachu);
+                    document.getElementById('op').value = "Invalid syntax on line " + (i + 1);
+                    alert(currentLine);
+                    alert(PiPikachu + "\n" + PikaPikachu);
                     return;
             }
         }
@@ -66,44 +69,35 @@ function compiler(code) {
         if (currentLine.endsWith("pi pikachu")) {
             pikachu = PiPikachu;
             currentLine = currentLine.substr(0, currentLine.length - 10).trim();
-        }
-        else if (currentLine.endsWith("pika pikachu")) {
+        } else if (currentLine.endsWith("pika pikachu")) {
             pikachu = PikaPikachu;
             currentLine = currentLine.substr(0, currentLine.length - 12).trim();
-        }
-        else {
-            document.getElementById('op').value = "Invalid syntax on line " + (i + 1); alert(currentLine);
+        } else {
+            document.getElementById('op').value = "Invalid syntax on line " + (i + 1);
+            alert(currentLine);
             return;
         }
 
         if (currentLine == "pi pika") {
             pikachu.push(pikachu[pikachu.length - 2] + pikachu[pikachu.length - 1]);
-        }
-        else if (currentLine == "pika pi") {
+        } else if (currentLine == "pika pi") {
             pikachu.push(pikachu[pikachu.length - 2] - pikachu[pikachu.length - 1]);
-        }
-        else if (currentLine == "pi pikachu") {
+        } else if (currentLine == "pi pikachu") {
             pikachu.push(pikachu[pikachu.length - 2] * pikachu[pikachu.length - 1]);
-        }
-        else if (currentLine == "pikachu") {
+        } else if (currentLine == "pikachu") {
             pikachu.push(pikachu[pikachu.length - 2] / pikachu[pikachu.length - 1]);
-        }
-        else if (currentLine == "pika pikachu") {
+        } else if (currentLine == "pika pikachu") {
             op = op.concat(pikachu.pop());
-        }
-        else if (currentLine == "pikachu pikachu") {
+        } else if (currentLine == "pikachu pikachu") {
             op = op.concat(String.fromCharCode(pikachu.pop()));
-        }
-        else if (currentLine == "") {
+        } else if (currentLine == "") {
             pikachu.pop();
-        }
-        else {
+        } else {
             n = pikachucount(currentLine).toString();
             if (n.endsWith("found ")) {
                 document.getElementById('op').value = n + "on line " + (i + 1);
                 return;
-            }
-            else {
+            } else {
                 pikachu.push(parseInt(n));
             }
         }
@@ -124,8 +118,7 @@ function pikachucount(pi) {
                 nprv = 0;
             pikachu++;
             prv = pi[a];
-        }
-        else return "Non-pikachu language found ";
+        } else return "Non-pikachu language found ";
 
     return pikachu;
 }
