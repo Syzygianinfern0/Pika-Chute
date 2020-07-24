@@ -5,10 +5,10 @@ def pikachucount(pi):
     pi = pi.strip().split(' ')
 
     for a in range(len(pi)):
-        if (pi[a] == "pi" or pi[a] == "pika" or pi[a] == "pikachu"):
-            if (nprv == 1 and prv == pi[a]):
+        if pi[a] == "pi" or pi[a] == "pika" or pi[a] == "pikachu":
+            if nprv == 1 and prv == pi[a]:
                 return pi[a] + " " + pi[a] + " " + pi[a] + " found "
-            elif (prv == pi[a]):
+            elif prv == pi[a]:
                 nprv += 1
             else:
                 nprv = 0
